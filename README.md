@@ -29,6 +29,8 @@ Trained on 2018–2019, scored on the 44,776 fires of 2020 it never saw:
 | accuracy | **42.0 %** |
 | macro-F1 (5 classes) | **0.407** |
 | always guessing the largest class | 31.9 % |
+| true cause among the model's first two | **66.4 %** |
+| always guessing the two largest classes | 56.6 % |
 
 Better than guessing, far from certain: read the output as a ranked list of likely causes, not an answer.
 More years (`download_fpa.py` without `--years`, 1992–2020, ~2 million fires) can be added; the numbers above are for 2018–2020 only.
@@ -86,6 +88,7 @@ built on **FPA-FOD** (USDA Forest Service, Short 2022). Land-cover classes match
 ### النتائج
 من ملفات 2018–2020: **134,177 حريقاً أمريكياً معروف السبب**. تدريب على 2018–2019 وقياس على 44,776 حريقاً من 2020 لم يرها:
 الدقة **42.0%**، وmacro-F1 **0.407**، مقابل 31.9% لو خمّنا دائماً السبب الأكثر شيوعاً.
+والسبب الصح ضمن أول اتنين **66.4%** من المرات، مقابل 56.6% لو خمّنا دائماً أكثر سببين.
 أفضل من التخمين لكنه بعيد عن اليقين: اقرأ النتيجة كترتيب للأسباب المحتملة لا كجواب.
 يمكن إضافة سنوات أكثر (1992–2020، نحو مليوني حريق)؛ الأرقام أعلاه لـ 2018–2020 فقط.
 

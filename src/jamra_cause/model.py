@@ -86,10 +86,14 @@ class CauseModel:
         m = mk().fit(_prep(tr), tr["label"])
         p = m.predict(_prep(te))
         share = te["label"].value_counts(normalize=True)
+        # the site shows the top causes, so also: is the true cause among the first two?
+        top2 = np.asarray(m.classes_)[np.argsort(-m.predict_proba(_prep(te)), axis=1)[:, :2]]
+        in_top2 = float(np.mean([y in row for y, row in zip(te["label"].to_numpy(), top2)]))
         self.eval = {"train_years": f"{int(tr['year'].min())}–{last - 1}", "test_year": last, "fires_test": int(len(te)),
                      "accuracy": round(float(accuracy_score(te["label"], p)), 3),
                      "macro_f1": round(float(f1_score(te["label"], p, average="macro")), 3),
-                     "chance": round(float(share.max()), 3), "classes": sorted(table["label"].unique()),
+                     "chance": round(float(share.max()), 3),
+                     "top2": round(in_top2, 3), "top2_chance": round(float(share.nlargest(2).sum()), 3), "classes": sorted(table["label"].unique()),
                      "fires_train": int(len(table)), "note": "measured on US fires; transfer to Jordan not measured"}
         self.model = mk().fit(_prep(table), table["label"])
         self.classes = list(self.model.classes_)
