@@ -1,0 +1,26 @@
+[project]
+name = "jamra-cause"
+version = "0.1.0"
+description = "Likely fire cause from month, weekday, weather and land cover, learned from the US FPA-FOD database (NASA Space Apps 2026)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.4.6",
+    "pandas>=3.1.1",
+    "pyarrow>=26.0.1",
+    "scikit-learn>=1.9.1",
+    "h3>=4.5.0",
+    "duckdb==1.4.3",
+]
+
+[project.scripts]
+jamra-cause = "jamra_cause.model:main"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]
