@@ -3,6 +3,7 @@ name = "jamra-cause"
 version = "0.1.0"
 description = "Likely fire cause from month, weekday, weather and land cover, learned from the US FPA-FOD database (NASA Space Apps 2026)"
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.11"
 dependencies = [
     "numpy>=2.4.6",
